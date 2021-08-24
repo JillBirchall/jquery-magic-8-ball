@@ -1,0 +1,122 @@
+:root {
+  --ball-size: 200px;
+  --circle-size: calc(var(--ball-size) * 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-spaced {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main-title {
+  font-family: "Lobster", cursive;
+  font-size: 70px;
+  color: rgb(0, 0, 61);
+}
+
+.container {
+  height: 100vh;
+  flex-direction: column;
+}
+
+.ball {
+  height: var(--ball-size);
+  width: var(--ball-size);
+  background: radial-gradient(circle at 50px 50px, rgb(92, 92, 92), black);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.ball:before {
+  content: "";
+  height: calc(var(--ball-size) * 0.2);
+  width: calc(var(--ball-size) * 0.1);
+  transform: rotate(30deg) skewY(-15deg);
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  filter: blur(10px);
+  opacity: 0.9;
+}
+
+.ball:hover {
+  cursor: pointer;
+}
+
+.eight-circle {
+  height: var(--circle-size);
+  width: var(--circle-size);
+  background-color: white;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+
+.eight-circle:after {
+  content: "8";
+  color: black;
+  font-size: calc(var(--circle-size) * 0.75);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.instruction-text {
+  font-family: "Montserrat", sans-serif;
+}
+
+.answer {
+  color: white;
+  position: absolute;
+  display: none;
+  text-shadow: 0px 0px 2px white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.answer-in-progress {
+  pointer-events: none;
+}
+
+@keyframes rotate-ball {
+  0% {
+    transform: translateY(0px) rotateX(0deg) scale(1);
+  }
+  100% {
+    transform: translateY(-100px) rotateX(84deg) scale(0.8) scaleX(1.08)
+      scaleY(0.92);
+  }
+}
+
+@keyframes rotate-ball-reverse {
+  100% {
+    transform: translateY(0px) rotateX(0deg) scale(1);
+  }
+  0% {
+    transform: translateY(-100px) rotateX(84deg) scale(0.8) scaleX(1.08)
+      scaleY(0.92);
+  }
+}
+
+.move-ball-back {
+  animation: rotate-ball-reverse 2s linear;
+}
+
+.move-ball {
+  animation: rotate-ball 2s linear forwards;
+}
