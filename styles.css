@@ -25,7 +25,7 @@
 
 .main-title {
   font-family: "Lobster", cursive;
-  font-size: 70px;
+  font-size: 24px;
   color: rgb(0, 0, 61);
 }
 
@@ -119,4 +119,16 @@
 
 .move-ball {
   animation: rotate-ball 2s linear forwards;
+}
+
+@media (min-width: 400px), (min-height: 400px) {
+  .main-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 800px), (min-height: 800px) {
+  .main-title {
+    font-size: 48px;
+  }
 }
